@@ -16,7 +16,7 @@ app.get('/references', async (req, res) => {
     res.send(parentReferences);
 });
 
-app.get('/asset-references', async (req, res) => {
+/*app.get('/asset-references', async (req, res) => {
     let assetUid = req.query.asset_uid;
     let listofrefs = [];
     try {
@@ -39,7 +39,7 @@ app.get('/asset-references', async (req, res) => {
      } catch (e) {
         res.send(500);
     }
-})
+})*/
 
 app.listen(port, () => {
     console.log(`Middleware running @ http://localhost:${port}`);
@@ -65,8 +65,8 @@ async function getParentReferences(entryUid, contentTypeUid, height = 0, isRootC
 
     let data;
     try {
-        console.log(`https://api.contentstack.io/v3/content_types/${contentTypeUid}/entries/${entryUid}/references`);
-        const response = await fetch(`https://api.contentstack.io/v3/content_types/${contentTypeUid}/entries/${entryUid}/references`, {
+        //console.log(`https://api.contentstack.io/v3/content_types/${contentTypeUid}/entries/${entryUid}/references`);
+        const response = await fetch(`https://gcp-na-api.contentstack.com/v3/content_types/${contentTypeUid}/entries/${entryUid}/references`, {
             method: 'GET',
             headers: headers
         });
